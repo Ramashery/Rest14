@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarella | Premium Italian Dining</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c41e3a;
+            --primary-dark: #9c0d24;
+            --gold: #d4af37;
+            --dark: #1a1a1a;
+            --light: #f9f5f0;
+            --watercolor-blue: rgba(68, 108, 179, 0.15);
+            --watercolor-red: rgba(196, 30, 58, 0.15);
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f9f5f0 0%, #e8e3dd 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(var(--watercolor-blue) 8%, transparent 0),
+                radial-gradient(var(--watercolor-red) 8%, transparent 0);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: var(--glass);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        header.scrolled {
+            padding: 1rem 2rem;
+            background: rgba(249, 245, 240, 0.9);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            filter: brightness(0.7);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .watercolor-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            font-weight: 900;
+            opacity: 0.03;
+            color: var(--primary);
+            z-index: -1;
+            font-family: 'Playfair Display', serif;
+            white-space: nowrap;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Menu Section */
+        .menu {
+            background: linear-gradient(135deg, #f1e9e0 0%, #e4dcd2 100%);
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .filter-btn:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            color: var(--primary);
+        }
+
+        .filter-btn.active:after, .filter-btn:hover:after {
+            width: 100%;
+        }
+
+        /* Dish Grid */
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .dish-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            perspective: 1000px;
+            position: relative;
+            will-change: transform;
+            cursor: pointer;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .dish-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dish-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .dish-card:hover .dish-image img {
+            transform: scale(1.1);
+        }
+
+        .dish-content {
+            padding: 1.5rem;
+        }
+
+        .dish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .dish-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .dish-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .dish-tagline {
+            color: #777;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .discover-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .discover-btn i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .discover-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Dish Detail */
+        .dish-detail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .dish-detail.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .detail-content {
+            width: 90%;
+            max-width: 1100px;
+            max-height: 90vh;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .dish-detail.active .detail-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .detail-image {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-info {
+            padding: 3rem;
+            overflow-y: auto;
+        }
+
+        .detail-header {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .detail-header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .detail-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-price {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .detail-description {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .detail-section h3 i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        .ingredients {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .ingredient {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70px;
+        }
+
+        .ingredient-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .ingredient-name {
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .nutrition-item {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .nutrition-value {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .pairing {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f9f5f0 0%, #f1e9e0 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .pairing i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-right: 1.5rem;
+        }
+
+        .pairing-text {
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .close-detail {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .close-detail:hover {
+            transform: rotate(90deg);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #e8e3dd 0%, #e1d9d1 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .contact-detail {
+            margin: 2rem 0;
+        }
+
+        .contact-detail i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #777;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-about p {
+            margin: 1rem 0;
+            line-height: 1.8;
+            color: #aaa;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-heading {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .contact-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .contact-btn:hover:after {
+            transform: translateY(0);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .telegram {
+            background: #0088cc;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-content {
+                grid-template-columns: 1fr;
+                max-height: 95vh;
+            }
+            
+            .detail-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+            }
+            
+            .watercolor-text {
+                font-size: 10rem;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .dish-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Aquarella</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Authentic Italian Excellence</h1>
+            <p>Experience the artistry of Italian cuisine with our handcrafted dishes made from the finest ingredients sourced from the hills of Tuscany.</p>
+            <a href="#menu" class="btn">Discover Our Menu</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="watercolor-text">Passion</div>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Culinary Journey</h2>
+                    <p>Founded in 2005 by Chef Marco Bianchi, Aquarella brings the authentic flavors of Italy to the heart of the city. With over 15 years of culinary excellence, our restaurant has become a destination for those who appreciate true Italian craftsmanship.</p>
+                    <p>Our philosophy is simple: respect for tradition, passion for innovation, and dedication to quality. Each dish tells a story of Italian regions, from the sun-drenched coasts of Sicily to the alpine valleys of Piedmont.</p>
+                    <p>At Aquarella, we believe that dining is an experience that engages all senses. Our elegant interior, curated wine selection, and attentive service create the perfect ambiance for your culinary journey.</p>
+                    <a href="#contact" class="btn">Reserve a Table</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Aquarella restaurant interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Culinary Masterpieces</h2>
+                <p>Each dish is a testament to our chefs' dedication to Italian culinary traditions with a contemporary touch.</p>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Antipasti</button>
+                <button class="filter-btn">Primi</button>
+                <button class="filter-btn">Secondi</button>
+                <button class="filter-btn">Dolci</button>
+            </div>
+
+            <div class="dish-grid">
+                <!-- Dish 1 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1606755962773-d324e7a7a7f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Truffle Risotto">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Truffle Risotto</h3>
+                            <div class="dish-price">$24</div>
+                        </div>
+                        <div class="dish-tagline">Carnaroli rice, black truffle, parmesan</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dish 2 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1625944525533-473f1d0a60f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Seafood Linguine">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Seafood Linguine</h3>
+                            <div class="dish-price">$28</div>
+                        </div>
+                        <div class="dish-tagline">Fresh catch, cherry tomatoes, white wine</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dish 3 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1603532648955-a039f9e4e4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Osso Buco">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Osso Buco</h3>
+                            <div class="dish-price">$36</div>
+                        </div>
+                        <div class="dish-tagline">Veal shank, gremolata, saffron risotto</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dish 4 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Burrata & Heirloom Tomatoes">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Burrata & Tomatoes</h3>
+                            <div class="dish-price">$18</div>
+                        </div>
+                        <div class="dish-tagline">Creamy burrata, heritage tomatoes, basil</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dish 5 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cee6a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Wild Mushroom Ravioli">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Wild Mushroom Ravioli</h3>
+                            <div class="dish-price">$22</div>
+                        </div>
+                        <div class="dish-tagline">Porcini, truffle butter, sage</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dish 6 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Grilled Branzino">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Grilled Branzino</h3>
+                            <div class="dish-price">$32</div>
+                        </div>
+                        <div class="dish-tagline">Mediterranean sea bass, lemon, capers</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dish 7 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1623846547660-b8c4c2a2f0d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tiramisu">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Tiramisu</h3>
+                            <div class="dish-price">$12</div>
+                        </div>
+                        <div class="dish-tagline">Espresso, mascarpone, cocoa</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dish 8 -->
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Margherita Pizza">
+                    </div>
+                    <div class="dish-content">
+                        <div class="dish-header">
+                            <h3 class="dish-name">Margherita Pizza</h3>
+                            <div class="dish-price">$16</div>
+                        </div>
+                        <div class="dish-tagline">San Marzano tomatoes, buffalo mozzarella</div>
+                        <a class="discover-btn">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dish Detail Overlay -->
+    <div class="dish-detail">
+        <div class="close-detail">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="detail-content">
+            <div class="detail-image">
+                <img src="https://images.unsplash.com/photo-1603532648955-a039f9e4e4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Osso Buco detail">
+            </div>
+            <div class="detail-info">
+                <div class="detail-header">
+                    <h2 class="detail-title">Osso Buco</h2>
+                    <div class="detail-price">$36</div>
+                </div>
+                
+                <p class="detail-description">
+                    Our signature Osso Buco features tender veal shanks slow-cooked in a rich tomato and vegetable broth until falling off the bone. The dish is finished with a vibrant gremolata of lemon zest, garlic, and parsley, adding a fresh contrast to the deep flavors. Served with a side of creamy saffron risotto, this Milanese classic is a celebration of Northern Italian cuisine.
+                </p>
+                
+                <div class="detail-section">
+                    <h3><i class="fas fa-mortar-pestle"></i> Ingredients</h3>
+                    <div class="ingredients">
+                        <div class="ingredient">
+                            <div class="ingredient-icon">
+                                <i class="fas fa-drumstick-bite"></i>
+                            </div>
+                            <div class="ingredient-name">Veal Shank</div>
+                        </div>
+                        <div class="ingredient">
+                            <div class="ingredient-icon">
+                                <i class="fas fa-wine-bottle"></i>
+                            </div>
+                            <div class="ingredient-name">White Wine</div>
+                        </div>
+                        <div class="ingredient">
+                            <div class="ingredient-icon">
+                                <i class="fas fa-carrot"></i>
+                            </div>
+                            <div class="ingredient-name">Vegetables</div>
+                        </div>
+                        <div class="ingredient">
+                            <div class="ingredient-icon">
+                                <i class="fas fa-lemon"></i>
+                            </div>
+                            <div class="ingredient-name">Lemon Zest</div>
+                        </div>
+                        <div class="ingredient">
+                            <div class="ingredient-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="ingredient-name">Parsley</div>
+                        </div>
+                        <div class="ingredient">
+                            <div class="ingredient-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="ingredient-name">Saffron</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3><i class="fas fa-apple-alt"></i> Nutrition (per serving)</h3>
+                    <div class="nutrition-grid">
+                        <div class="nutrition-item">
+                            <div class="nutrition-label">Calories</div>
+                            <div class="nutrition-value">680 kcal</div>
+                        </div>
+                        <div class="nutrition-item">
+                            <div class="nutrition-label">Protein</div>
+                            <div class="nutrition-value">42g</div>
+                        </div>
+                        <div class="nutrition-item">
+                            <div class="nutrition-label">Carbs</div>
+                            <div class="nutrition-value">55g</div>
+                        </div>
+                        <div class="nutrition-item">
+                            <div class="nutrition-label">Fat</div>
+                            <div class="nutrition-value">28g</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #777;">Contains: Dairy</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3><i class="fas fa-wine-glass-alt"></i> Pairing Recommendation</h3>
+                    <div class="pairing">
+                        <i class="fas fa-wine-bottle"></i>
+                        <div class="pairing-text">
+                            "Perfect with a glass of Chianti Classico Riserva. The wine's robust tannins and cherry notes complement the rich flavors of the veal and cut through the dish's richness."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Atmosphere</h2>
+                <p>Step into our elegant dining space where modern luxury meets Italian warmth.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Restaurant interior">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Chef preparing dish">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Dining area">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Wine selection">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="about" id="contact">
+        <div class="container">
+            <div class="contact">
+                <div class="contact-info">
+                    <h3>Visit Us</h3>
+                    <div class="contact-detail">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Culinary Avenue, Food District</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> reservations@aquarella.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <h4>Opening Hours</h4>
+                        <p>Monday - Thursday: 5:00 PM - 10:00 PM</p>
+                        <p>Friday - Saturday: 5:00 PM - 11:00 PM</p>
+                        <p>Sunday: 4:00 PM - 9:00 PM</p>
+                    </div>
+                    <a href="#" class="btn">Make a Reservation</a>
+                </div>
+                <div class="map-container">
+                    <p>Restaurant Location Map</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">Aquarella</div>
+                <p>Experience the true essence of Italian cuisine in an atmosphere of understated elegance. Our passion for authentic flavors and warm hospitality creates unforgettable dining experiences.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Aquarella Italian Restaurant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Contact Buttons -->
+    <div class="contact-buttons">
+        <a href="#" class="contact-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="contact-btn telegram">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Dish card interactions
+        const dishCards = document.querySelectorAll('.dish-card');
+        const dishDetail = document.querySelector('.dish-detail');
+        const closeDetail = document.querySelector('.close-detail');
+
+        dishCards.forEach(card => {
+            card.addEventListener('click', function() {
+                dishDetail.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeDetail.addEventListener('click', function() {
+            dishDetail.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Filter buttons animation
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Card tilt effect
+        dishCards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const cardRect = this.getBoundingClientRect();
+                const cardCenterX = cardRect.left + cardRect.width/2;
+                const cardCenterY = cardRect.top + cardRect.height/2;
+                
+                const mouseX = e.clientX - cardCenterX;
+                const mouseY = e.clientY - cardCenterY;
+                
+                const rotateX = (mouseY / cardRect.height) * -10;
+                const rotateY = (mouseX / cardRect.width) * 10;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
